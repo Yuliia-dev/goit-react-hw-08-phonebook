@@ -15,6 +15,10 @@ export default function App() {
     setFilter(e.target.value);
   };
 
+  //  const searchNameOnList = e => {
+  //    setFilter(e.target.value);
+  //  };
+
   const visibleContact = () => {
     const normalizeFilter = filter.toLowerCase();
     return data?.filter(contact =>
