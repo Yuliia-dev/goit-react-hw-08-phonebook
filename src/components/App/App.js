@@ -1,38 +1,32 @@
-import { useState } from 'react';
-import { useGetContactsQuery } from 'redux/contacts/contacts-api';
-import PhonebookForm from '../PhonebookForm/PhonebookForm';
-import Filter from '../Filter/Filter';
-import ContactsList from '../ContactsList/ContactsList';
-import { Container, TitlePhonebook, TitleContacts } from './App.styled';
+import React, { lazy, Suspense } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+// import { Toaster } from 'react-hot-toast';
+import Navigation from '../../components/Navigation/Navigation';
+import UserMenu from '../../components/UserMenu/UserMenu';
+
+const PhonebookPage = lazy(() =>
+  import('../../pages/PhonebookPage/PhonebookPage.js')
+);
+const LoginPage = lazy(() => import('../../pages/LoginPage/LoginPage.js'));
+const SignupPage = lazy(() => import('../../pages/SignupPage/SignupPage.js'));
+const HomePage = lazy(() => import('../../pages/HomePage/HomePage.js'));
+// const Reviews = lazy(() => import('../../pages/Reviews/Reviews.js'));
 
 export default function App() {
-  const [filter, setFilter] = useState('');
-  const { data } = useGetContactsQuery({
-    skip: filter === '',
-  });
-
-  const searchNameOnList = e => {
-    setFilter(e.target.value);
-  };
-
-  //  const searchNameOnList = e => {
-  //    setFilter(e.target.value);
-  //  };
-
-  const visibleContact = () => {
-    const normalizeFilter = filter.toLowerCase();
-    return data?.filter(contact =>
-      contact.name.toLowerCase().includes(normalizeFilter)
-    );
-  };
-
   return (
-    <Container>
-      <TitlePhonebook>Phonebook</TitlePhonebook>
-      <PhonebookForm />
-      <TitleContacts>Contacts</TitleContacts>
-      <Filter value={filter} searchName={searchNameOnList} />
-      <ContactsList contacts={visibleContact()} />
-    </Container>
+    <>
+      {/* <Toaster position="top-center" reverseOrder={false} /> */}
+      <Navigation />
+      <Suspense fallback="">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="user" element={<UserMenu />} />
+          <Route path="register" element={<SignupPage />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="contacts" element={<PhonebookPage />} />
+          <Route path="*" element={<Navigate to="/ " />} />
+        </Routes>
+      </Suspense>
+    </>
   );
 }
