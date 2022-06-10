@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { logIn } from 'redux/auth/auth-operation';
+import { register } from 'redux/auth/auth-operation';
 
-export default function LoginView() {
+export default function RegisterView() {
   const dispatch = useDispatch();
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleChange = e => {
     switch (e.target.name) {
+      case 'name':
+        setName(e.target.value);
+        break;
       case 'email':
         setEmail(e.target.value);
         break;
@@ -22,14 +26,19 @@ export default function LoginView() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(logIn({ email, password }));
+    dispatch(register({ name, email, password }));
+    setName('');
     setEmail('');
     setPassword('');
   };
   return (
     <div>
-      <h1>Page for enter registered users</h1>
+      <h1>Page for register users</h1>
       <form onSubmit={handleSubmit} autoComplete="off">
+        <label>
+          Name
+          <input type="text" name="name" value={name} onChange={handleChange} />
+        </label>
         <label>
           Email
           <input
@@ -49,7 +58,7 @@ export default function LoginView() {
           />
         </label>
         <button type="submit">
-          <strong>Log in</strong>
+          <strong>Sign in</strong>
         </button>
       </form>
     </div>

@@ -3,10 +3,7 @@ import React from 'react';
 export default function HomeView() {
   return (
     <div>
-      <p>
-        <strong>Log in</strong> or <strong>Sign up</strong> to entries into your
-        phonebook account
-      </p>
+      <p>Hi, we are glad see you again, let's go in app</p>
     </div>
   );
 }

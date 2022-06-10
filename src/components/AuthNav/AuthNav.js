@@ -10,11 +10,11 @@ const styles = {
   // },
 };
 
-export default function Navigation() {
+export default function AuthNav() {
   return (
-    <nav style={styles.container}>
-      <NavLink to="/">home </NavLink>
-      <NavLink to="contacts">contacts </NavLink>
-    </nav>
+    <div style={styles.container}>
+      <NavLink to="register">register </NavLink>
+      <NavLink to="login">login </NavLink>
+    </div>
   );
 }

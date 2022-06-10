@@ -1,10 +1,10 @@
 import React from 'react';
-import SignupView from 'components/SignupView/SignupView';
+import RegisterView from 'components/RegisterView/RegisterView';
 
 export default function LoginPage() {
   return (
     <>
-      <SignupView />
+      <RegisterView />
     </>
   );
 }

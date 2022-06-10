@@ -1,41 +1,53 @@
 import PropTypes from 'prop-types';
-import {
-  useGetContactsQuery,
-  useDeleteContactsMutation,
-} from 'redux/contacts/contacts-api';
+import { useEffect } from 'react';
+// import {
+//   useGetContactsQuery,
+//   useDeleteContactsMutation,
+// } from 'redux/contacts/contacts-api';
 import {
   ContactsListStyle,
   ContactsItem,
   ContactsItemText,
   DeleteBtn,
 } from './ContactsList.styled';
-import Spinner from 'components/Spinner/Spinner';
+import { useSelector, useDispatch } from 'react-redux';
+import { getItems } from 'redux/contacts/contacts-selectors';
+import { getContacts, deleteContacts } from 'redux/contacts/contacts-operation';
 
-export default function ContactsList({ contacts }) {
-  const [deleteContacts, { isLoading: isDeleting }] =
-    useDeleteContactsMutation();
-  const { error, isFetching } = useGetContactsQuery();
+// import Spinner from 'components/Spinner/Spinner';
+
+export default function ContactsList() {
+  // const [deleteContacts, { isLoading: isDeleting }] =
+  //   useDeleteContactsMutation();
+  // const { error, isFetching } = useGetContactsQuery();
+  const contacts = useSelector(getItems);
+  const dispatch = useDispatch();
+  // const onDeleteItems = id => dispatch(deleteContacts(id));
+
+  useEffect(() => {
+    dispatch(getContacts());
+  }, [dispatch]);
 
   return (
     <>
       <ContactsListStyle>
-        {isFetching && <Spinner />}
-        {contacts?.map(({ id, name, phone }) => {
+        {/* {isFetching && <Spinner />} */}
+        {contacts?.map(({ id, name, number }) => {
           return (
             <ContactsItem key={id}>
               <ContactsItemText>
-                {name}: {phone}
+                {name}: {number}
               </ContactsItemText>
               <DeleteBtn
-                onClick={() => deleteContacts(id)}
-                disabled={isDeleting}
+                onClick={() => dispatch(deleteContacts(id))}
+                // disabled={isDeleting}
               >
                 Delete
               </DeleteBtn>
             </ContactsItem>
           );
         })}
-        {error && <div> Sorry, contacts not found :( </div>}
+        {/* {error && <div> Sorry, contacts not found :( </div>} */}
       </ContactsListStyle>
     </>
   );
@@ -46,7 +58,7 @@ ContactsList.propTypes = {
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      phone: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
     })
   ),
 };
