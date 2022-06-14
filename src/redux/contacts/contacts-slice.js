@@ -10,7 +10,6 @@ export const contactsReducer = createSlice({
     },
     [deleteContacts.fulfilled](state, action) {
       return state.filter(({ id }) => {
-        //console.log(id);
         return id !== action.meta.arg;
       });
     },
@@ -21,7 +20,3 @@ export const contactsReducer = createSlice({
 });
 
 export const { addItems, deleteItems } = contactsReducer.actions;
-
-// export const reducer = combineReducers({
-//   items: contactsReducer.reducer,
-// });

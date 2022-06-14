@@ -1,28 +1,17 @@
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
-// import {
-//   useGetContactsQuery,
-//   useDeleteContactsMutation,
-// } from 'redux/contacts/contacts-api';
 import {
   ContactsListStyle,
   ContactsItem,
   ContactsItemText,
   DeleteBtn,
 } from './ContactsList.styled';
-import { useSelector, useDispatch } from 'react-redux';
-import { getItems } from 'redux/contacts/contacts-selectors';
+import { useDispatch } from 'react-redux';
 import { getContacts, deleteContacts } from 'redux/contacts/contacts-operation';
-
 // import Spinner from 'components/Spinner/Spinner';
 
-export default function ContactsList() {
-  // const [deleteContacts, { isLoading: isDeleting }] =
-  //   useDeleteContactsMutation();
-  // const { error, isFetching } = useGetContactsQuery();
-  const contacts = useSelector(getItems);
+export default function ContactsList({ contacts }) {
   const dispatch = useDispatch();
-  // const onDeleteItems = id => dispatch(deleteContacts(id));
 
   useEffect(() => {
     dispatch(getContacts());

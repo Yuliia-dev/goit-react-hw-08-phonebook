@@ -4,10 +4,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getItems } from 'redux/contacts/contacts-selectors';
 import { addContact } from 'redux/contacts/contacts-operation';
-// import {
-//   useAddContactMutation,
-//   useGetContactsQuery,
-// } from 'redux/contacts/contacts-api';
 import {
   FormContact,
   LabelFormContact,
@@ -21,10 +17,6 @@ export default function PhonebookForm() {
   const [number, setNumber] = useState('');
   const dispatch = useDispatch();
   const contacts = useSelector(getItems);
-
-  // const { data } = useGetContactsQuery();
-
-  // const [addContact] = useAddContactMutation();
 
   const submitForm = e => {
     e.preventDefault();

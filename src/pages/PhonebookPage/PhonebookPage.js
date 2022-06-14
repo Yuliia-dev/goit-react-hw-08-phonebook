@@ -1,5 +1,4 @@
 import { useState } from 'react';
-// import { useGetContactsQuery } from 'redux/contacts/contacts-api';
 import { useSelector } from 'react-redux';
 import { getItems } from 'redux/contacts/contacts-selectors';
 import PhonebookForm from '../../components/PhonebookForm/PhonebookForm';
@@ -14,9 +13,6 @@ import {
 export default function PhonebookPage() {
   const [filter, setFilter] = useState('');
   const contacts = useSelector(getItems);
-  // const { data } = useGetContactsQuery({
-  //   skip: filter === '',
-  // });
 
   const searchNameOnList = e => {
     setFilter(e.target.value);
