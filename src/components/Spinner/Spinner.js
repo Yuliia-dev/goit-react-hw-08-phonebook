@@ -1,4 +1,3 @@
-// import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
 import { Oval } from 'react-loader-spinner';
 
 export default function Spinner() {
@@ -8,7 +7,7 @@ export default function Spinner() {
       height={50}
       width={50}
       strokeWidth={3}
-      color="red"
+      color="blue"
       secondaryColor="green"
     />
   );

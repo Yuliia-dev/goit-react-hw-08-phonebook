@@ -1,23 +1,13 @@
-import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getIsLoggedIn } from 'redux/auth/auth-selectors';
-
-const styles = {
-  container: {
-    display: 'flex',
-    gap: '20px',
-  },
-  // link: {
-  //   color: 'red',
-  // },
-};
+import { Container, NavLinks } from 'components/AuthNav/AuthNav.styled';
 
 export default function Navigation() {
   const isLoggedIn = useSelector(getIsLoggedIn);
   return (
-    <nav style={styles.container}>
-      <NavLink to="/">home </NavLink>
-      {isLoggedIn && <NavLink to="contacts">contacts </NavLink>}
-    </nav>
+    <Container>
+      <NavLinks to="/">home </NavLinks>
+      {isLoggedIn && <NavLinks to="contacts">contacts </NavLinks>}
+    </Container>
   );
 }

@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/auth-operation';
+import {
+  ContainerRegister,
+  TextRegister,
+  FormRegister,
+  InputForm,
+  LabelForm,
+  TextForm,
+  ButtonRegister,
+} from './RegisterView.styled';
 
 export default function RegisterView() {
   const dispatch = useDispatch();
@@ -32,35 +41,46 @@ export default function RegisterView() {
     setPassword('');
   };
   return (
-    <div>
-      <h1>Page for register users</h1>
-      <form onSubmit={handleSubmit} autoComplete="off">
-        <label>
-          Name
-          <input type="text" name="name" value={name} onChange={handleChange} />
-        </label>
-        <label>
-          Email
-          <input
+    <ContainerRegister>
+      <TextRegister>You can register here</TextRegister>
+      <FormRegister onSubmit={handleSubmit} autoComplete="off">
+        <LabelForm>
+          <TextForm>Name</TextForm>
+
+          <InputForm
+            type="text"
+            name="name"
+            value={name}
+            onChange={handleChange}
+            placeholder="Your name.."
+          />
+        </LabelForm>
+        <LabelForm>
+          <TextForm>Email</TextForm>
+
+          <InputForm
             type="email"
             name="email"
             value={email}
             onChange={handleChange}
+            placeholder="Your email.."
           />
-        </label>
-        <label>
-          Password
-          <input
+        </LabelForm>
+        <LabelForm>
+          <TextForm>Password</TextForm>
+
+          <InputForm
             type="password"
             name="password"
             value={password}
             onChange={handleChange}
+            placeholder="Your password.."
           />
-        </label>
-        <button type="submit">
+        </LabelForm>
+        <ButtonRegister type="submit">
           <strong>Sign in</strong>
-        </button>
-      </form>
-    </div>
+        </ButtonRegister>
+      </FormRegister>
+    </ContainerRegister>
   );
 }

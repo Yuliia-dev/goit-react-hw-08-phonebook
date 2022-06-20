@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/auth-operation';
+import {
+  ContainerRegister,
+  TextRegister,
+  FormRegister,
+  InputForm,
+  LabelForm,
+  TextForm,
+  ButtonRegister,
+} from '../RegisterView/RegisterView.styled';
 
 export default function LoginView() {
   const dispatch = useDispatch();
@@ -27,31 +36,35 @@ export default function LoginView() {
     setPassword('');
   };
   return (
-    <div>
-      <h1>Page for enter registered users</h1>
-      <form onSubmit={handleSubmit} autoComplete="off">
-        <label>
-          Email
-          <input
+    <ContainerRegister>
+      <TextRegister>You can log in here</TextRegister>
+      <FormRegister onSubmit={handleSubmit} autoComplete="off">
+        <LabelForm>
+          <TextForm>Email</TextForm>
+
+          <InputForm
             type="email"
             name="email"
             value={email}
             onChange={handleChange}
+            placeholder="Your email.."
           />
-        </label>
-        <label>
-          Password
-          <input
+        </LabelForm>
+        <LabelForm>
+          <TextForm>Password</TextForm>
+
+          <InputForm
             type="password"
             name="password"
             value={password}
             onChange={handleChange}
+            placeholder="Your password.."
           />
-        </label>
-        <button type="submit">
+        </LabelForm>
+        <ButtonRegister type="submit">
           <strong>Log in</strong>
-        </button>
-      </form>
-    </div>
+        </ButtonRegister>
+      </FormRegister>
+    </ContainerRegister>
   );
 }

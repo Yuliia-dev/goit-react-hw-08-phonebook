@@ -1,20 +1,10 @@
-import { NavLink } from 'react-router-dom';
-
-const styles = {
-  container: {
-    display: 'flex',
-    gap: '20px',
-  },
-  // link: {
-  //   color: 'red',
-  // },
-};
+import { Container, NavLinks } from './AuthNav.styled';
 
 export default function AuthNav() {
   return (
-    <div style={styles.container}>
-      <NavLink to="register">register </NavLink>
-      <NavLink to="login">login </NavLink>
-    </div>
+    <Container>
+      <NavLinks to="register">register </NavLinks>
+      <NavLinks to="login">login </NavLinks>
+    </Container>
   );
 }

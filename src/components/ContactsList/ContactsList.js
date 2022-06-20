@@ -8,7 +8,7 @@ import {
 } from './ContactsList.styled';
 import { useDispatch } from 'react-redux';
 import { getContacts, deleteContacts } from 'redux/contacts/contacts-operation';
-// import Spinner from 'components/Spinner/Spinner';
+import Spinner from 'components/Spinner/Spinner';
 
 export default function ContactsList({ contacts }) {
   const dispatch = useDispatch();
@@ -20,23 +20,25 @@ export default function ContactsList({ contacts }) {
   return (
     <>
       <ContactsListStyle>
-        {/* {isFetching && <Spinner />} */}
+        {!contacts && <Spinner />}
         {contacts?.map(({ id, name, number }) => {
           return (
             <ContactsItem key={id}>
               <ContactsItemText>
                 {name}: {number}
               </ContactsItemText>
-              <DeleteBtn
-                onClick={() => dispatch(deleteContacts(id))}
-                // disabled={isDeleting}
-              >
+              <DeleteBtn onClick={() => dispatch(deleteContacts(id))}>
                 Delete
               </DeleteBtn>
             </ContactsItem>
           );
         })}
-        {/* {error && <div> Sorry, contacts not found :( </div>} */}
+        {contacts.length === 0 && (
+          <div>
+            {' '}
+            <strong>The list is empty, add your contacts.</strong>{' '}
+          </div>
+        )}
       </ContactsListStyle>
     </>
   );

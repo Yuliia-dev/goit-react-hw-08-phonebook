@@ -40,4 +40,8 @@ export const DeleteBtn = styled.button`
   padding: 5px;
   text-align: center;
   text-decoration: none;
+  &:hover {
+    background-color: ${props => props.theme.colors.lightRed};
+    color: ${props => props.theme.colors.red};
+  }
 `;

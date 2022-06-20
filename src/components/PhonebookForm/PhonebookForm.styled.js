@@ -49,4 +49,8 @@ export const ButtonFormContact = styled.button`
   padding: 6px 16px;
   text-align: center;
   text-decoration: none;
+  &:hover {
+    background-color: ${props => props.theme.colors.lightGreen};
+    color: ${props => props.theme.colors.blue};
+  }
 `;

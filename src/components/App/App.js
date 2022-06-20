@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import React, { lazy, Suspense, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 // import { Toaster } from 'react-hot-toast';
+import Spinner from 'components/Spinner/Spinner.js';
 import AppBar from 'components/AppBar/AppBar.js';
 import { fetchCurrentUser } from 'redux/auth/auth-operation.js';
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute.js';
@@ -26,11 +27,11 @@ export default function App() {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <h1>Loading...</h1>
+    <Spinner />
   ) : (
     <>
       <AppBar />
-      <Suspense fallback={<h1>Loading...</h1>}>
+      <Suspense fallback={<Spinner />}>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route
