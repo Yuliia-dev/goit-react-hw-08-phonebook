@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { logIn } from 'redux/auth/auth-operation';
 import {
   ContainerRegister,
@@ -37,6 +39,7 @@ export default function LoginView() {
   };
   return (
     <ContainerRegister>
+      <ToastContainer position="top-center" />
       <TextRegister>You can log in here</TextRegister>
       <FormRegister onSubmit={handleSubmit} autoComplete="off">
         <LabelForm>

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { register } from 'redux/auth/auth-operation';
 import {
   ContainerRegister,
@@ -42,6 +44,7 @@ export default function RegisterView() {
   };
   return (
     <ContainerRegister>
+      <ToastContainer position="top-center" />
       <TextRegister>You can register here</TextRegister>
       <FormRegister onSubmit={handleSubmit} autoComplete="off">
         <LabelForm>
@@ -53,6 +56,7 @@ export default function RegisterView() {
             value={name}
             onChange={handleChange}
             placeholder="Your name.."
+            required
           />
         </LabelForm>
         <LabelForm>
@@ -64,6 +68,7 @@ export default function RegisterView() {
             value={email}
             onChange={handleChange}
             placeholder="Your email.."
+            required
           />
         </LabelForm>
         <LabelForm>
@@ -75,11 +80,10 @@ export default function RegisterView() {
             value={password}
             onChange={handleChange}
             placeholder="Your password.."
+            required
           />
         </LabelForm>
-        <ButtonRegister type="submit">
-          <strong>Sign in</strong>
-        </ButtonRegister>
+        <ButtonRegister type="submit">Sign up </ButtonRegister>
       </FormRegister>
     </ContainerRegister>
   );
