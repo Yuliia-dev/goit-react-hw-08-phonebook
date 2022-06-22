@@ -51,6 +51,7 @@ export default function LoginView() {
             value={email}
             onChange={handleChange}
             placeholder="Your email.."
+            required
           />
         </LabelForm>
         <LabelForm>
@@ -62,6 +63,7 @@ export default function LoginView() {
             value={password}
             onChange={handleChange}
             placeholder="Your password.."
+            required
           />
         </LabelForm>
         <ButtonRegister type="submit">
