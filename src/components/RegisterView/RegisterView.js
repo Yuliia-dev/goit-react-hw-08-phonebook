@@ -83,7 +83,7 @@ export default function RegisterView() {
             required
           />
         </LabelForm>
-        <ButtonRegister type="submit">Sign up </ButtonRegister>
+        <ButtonRegister type="submit">Sign Up </ButtonRegister>
       </FormRegister>
     </ContainerRegister>
   );
